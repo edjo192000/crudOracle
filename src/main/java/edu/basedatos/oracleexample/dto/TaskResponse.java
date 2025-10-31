@@ -1,73 +1,54 @@
-package edu.basedatos.oracleexample.domain;
+package edu.basedatos.oracleexample.dto;
 
+import edu.basedatos.oracleexample.domain.Task;
 import edu.basedatos.oracleexample.enums.Priority;
 import edu.basedatos.oracleexample.enums.Status;
-import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-@Entity
-@Table(name = "TASKS")
-public class Task {
+public class TaskResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_seq")
-    @SequenceGenerator(name = "tasks_seq", sequenceName = "TASKS_SEQ", allocationSize = 1)
-    @Column(name = "TASK_ID")
     private Long taskId;
-
-    @Column(name = "TITLE", nullable = false, length = 200)
     private String title;
-
-    @Column(name = "DESCRIPTION", length = 1000)
     private String description;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "PRIORITY", nullable = false, length = 20)
-    private Priority priority = Priority.MEDIUM;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "STATUS", nullable = false, length = 20)
-    private Status status = Status.PENDING;
-
-    @Column(name = "DUE_DATE")
+    private Priority priority;
+    private Status status;
     private LocalDate dueDate;
-
-    @Column(name = "ASSIGNED_TO", length = 100)
     private String assignedTo;
-
-    @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-
-    @Column(name = "UPDATED_AT", nullable = false)
     private LocalDateTime updatedAt;
 
-    // Métodos de ciclo de vida
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
+    // Constructor vacío
+    public TaskResponse() {
     }
 
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+    // Constructor desde entidad (para facilitar la conversión)
+    public TaskResponse(Task task) {
+        this.taskId = task.getTaskId();
+        this.title = task.getTitle();
+        this.description = task.getDescription();
+        this.priority = task.getPriority();
+        this.status = task.getStatus();
+        this.dueDate = task.getDueDate();
+        this.assignedTo = task.getAssignedTo();
+        this.createdAt = task.getCreatedAt();
+        this.updatedAt = task.getUpdatedAt();
     }
 
-    // Constructores
-    public Task() {
-    }
-
-    public Task(String title, String description, Priority priority, Status status,
-                LocalDate dueDate, String assignedTo) {
+    // Constructor con todos los campos
+    public TaskResponse(Long taskId, String title, String description, Priority priority,
+                        Status status, LocalDate dueDate, String assignedTo,
+                        LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.taskId = taskId;
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.status = status;
         this.dueDate = dueDate;
         this.assignedTo = assignedTo;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     // Getters y Setters
@@ -143,24 +124,9 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
-    // equals y hashCode
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return Objects.equals(taskId, task.taskId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(taskId);
-    }
-
-    // toString
     @Override
     public String toString() {
-        return "Task{" +
+        return "TaskResponse{" +
                 "taskId=" + taskId +
                 ", title='" + title + '\'' +
                 ", priority=" + priority +
