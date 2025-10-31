@@ -10,7 +10,7 @@ public class SimpleOracleTestLocal {
 
         String[] urls = {
                 "jdbc:oracle:thin:@localhost:1521/ORCLPDB1",
-                "jdbc:oracle:thin:@localhost:1521:ORCLCDB"     
+                "jdbc:oracle:thin:@localhost:1521:ORCLCDB"
         };
 
         for (String url : urls) {
