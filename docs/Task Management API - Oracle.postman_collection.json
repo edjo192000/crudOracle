@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "a91ef857-1a23-4493-8aec-c6f45b08170c",
+		"name": "Task Management API - Oracle",
+		"description": "Colección de Postman para probar el API REST de gestión de tareas con Oracle Database",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45006844",
+		"_collection_link": "https://nayeli-392281.postman.co/workspace/Nayeli's-Workspace~8643d20a-bd3d-459a-838e-ef4953310716/collection/45006844-a91ef857-1a23-4493-8aec-c6f45b08170c?action=share&source=collection_link&creator=45006844"
+	},
+	"item": [
+		{
+			"name": "obtenerTodasLasTareas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks"
+					]
+				},
+				"description": "Obtener todas las tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener tarea por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				},
+				"description": "Obtener una tarea específica por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear tarea",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Implementar nueva funcionalidad\",\n  \"description\": \"Agregar sistema de notificaciones al usuario\",\n  \"priority\": \"HIGH\",\n  \"status\": \"PENDING\",\n  \"dueDate\": \"2025-12-31\",\n  \"assignedTo\": \"Juan Pérez\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks"
+					]
+				},
+				"description": "Crear una nueva tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarTarea",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"IN_PROGRESS\",\n  \"description\": \"Trabajando en las notificaciones\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				},
+				"description": "Actualizar una tarea existente"
+			},
+			"response": []
+		},
+		{
+			"name": "BorrarTarea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				},
+				"description": "Eliminar una tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "CompletarTarea",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/1/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"1",
+						"complete"
+					]
+				},
+				"description": "Marcar una tarea como completada"
+			},
+			"response": []
+		}
+	]
+}
