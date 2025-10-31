@@ -3,7 +3,7 @@ package edu.basedatos.oracleexample;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class SimpleOracleTest {
+public class SimpleOracleTestProfe {
     public static void main(String[] args) {
         String[] urls = {
                 "jdbc:oracle:thin:@192.168.11.211:1521:xe",

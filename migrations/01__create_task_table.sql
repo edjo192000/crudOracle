@@ -29,16 +29,9 @@ CREATE TABLE TASKS (
                        CONSTRAINT chk_status CHECK (status IN ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'))
 );
 
--- Crear secuencia para el ID autoincrementable
+-- Crear secuencia para el ID
 CREATE SEQUENCE TASKS_SEQ
     START WITH 1
     INCREMENT BY 1
     NOCACHE
     NOCYCLE;
-
-PROMPT
-PROMPT ========================================
-PROMPT Tabla TASKS creada exitosamente!
-PROMPT Secuencia TASKS_SEQ creada!
-PROMPT ========================================
-PROMPT
