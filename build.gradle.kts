@@ -26,6 +26,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    implementation("org.mongodb:mongodb-driver-sync:5.2.1")
+    implementation("org.mongodb:mongodb-driver-core:5.2.1")
+    implementation("org.mongodb:bson:5.2.1")
+    implementation("org.mongodb:bson-record-codec:5.2.1")
     // Oracle JDBC Driver
     runtimeOnly("com.oracle.database.jdbc:ojdbc11")
 

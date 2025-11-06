@@ -28,3 +28,16 @@ SELECT username FROM dba_users WHERE username = 'HR';
 
 -- Salir
 EXIT;
+
+
+#MongoDB
+
+´´´
+docker run -d \
+--name mongodb \
+-p 27017:27017 \
+-e MONGO_INITDB_ROOT_USERNAME=mico \
+-e MONGO_INITDB_ROOT_PASSWORD=sanaed \
+-v mongoStorage:/data/db \
+mongo:latest
+´´´
